@@ -1,5 +1,5 @@
 
-.xof-image-gallery-wrapper {
+.simple-photo-gallery-wrapper {
   position: relative;
   height: calc(100vh - 20px);
   width: calc(100vw - 20px);
@@ -10,7 +10,7 @@
     height: 100%;
     width: 100%;
   }
-  .xof-image-gallery {
+  .simple-photo-gallery {
     height: 100%;
     width: 100%;
     min-width: 500px;
@@ -116,18 +116,6 @@
       top: 0;
     }
   }
-
-  .close-icon {
-    background: url('../assets/icons/close-black.svg');
-    height: 50px;
-    cursor: pointer;
-    width: 50px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    background-size: contain;
-  }
-
 
   .thumbnails {
     display: flex;
