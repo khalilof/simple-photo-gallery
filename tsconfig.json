@@ -6,5 +6,18 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/simple-photo-gallery/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/simple-photo-gallery/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/simple-photo-gallery-example/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/simple-photo-gallery-example/tsconfig.spec.json"
+    }
+]
 }

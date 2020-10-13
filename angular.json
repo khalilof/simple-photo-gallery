@@ -2,5 +2,167 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "simple-photo-gallery": {
+      "projectType": "library",
+      "root": "projects/simple-photo-gallery",
+      "sourceRoot": "projects/simple-photo-gallery/src",
+      "prefix": "kh",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/simple-photo-gallery/tsconfig.lib.json",
+            "project": "projects/simple-photo-gallery/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/simple-photo-gallery/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simple-photo-gallery/src/test.ts",
+            "tsConfig": "projects/simple-photo-gallery/tsconfig.spec.json",
+            "karmaConfig": "projects/simple-photo-gallery/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/simple-photo-gallery/tsconfig.lib.json",
+              "projects/simple-photo-gallery/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "simple-photo-gallery-example": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/simple-photo-gallery-example",
+      "sourceRoot": "projects/simple-photo-gallery-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/simple-photo-gallery-example",
+            "index": "projects/simple-photo-gallery-example/src/index.html",
+            "main": "projects/simple-photo-gallery-example/src/main.ts",
+            "polyfills": "projects/simple-photo-gallery-example/src/polyfills.ts",
+            "tsConfig": "projects/simple-photo-gallery-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/simple-photo-gallery-example/src/favicon.ico",
+              "projects/simple-photo-gallery-example/src/assets"
+            ],
+            "styles": [
+              "projects/simple-photo-gallery-example/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/simple-photo-gallery-example/src/environments/environment.ts",
+                  "with": "projects/simple-photo-gallery-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "simple-photo-gallery-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "simple-photo-gallery-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "simple-photo-gallery-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/simple-photo-gallery-example/src/test.ts",
+            "polyfills": "projects/simple-photo-gallery-example/src/polyfills.ts",
+            "tsConfig": "projects/simple-photo-gallery-example/tsconfig.spec.json",
+            "karmaConfig": "projects/simple-photo-gallery-example/karma.conf.js",
+            "assets": [
+              "projects/simple-photo-gallery-example/src/favicon.ico",
+              "projects/simple-photo-gallery-example/src/assets"
+            ],
+            "styles": [
+              "projects/simple-photo-gallery-example/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/simple-photo-gallery-example/tsconfig.app.json",
+              "projects/simple-photo-gallery-example/tsconfig.spec.json",
+              "projects/simple-photo-gallery-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/simple-photo-gallery-example/e2e/protractor.conf.js",
+            "devServerTarget": "simple-photo-gallery-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "simple-photo-gallery-example:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "simple-photo-gallery"
 }

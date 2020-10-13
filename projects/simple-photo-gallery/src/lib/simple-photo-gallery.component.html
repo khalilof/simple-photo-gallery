@@ -1,0 +1,35 @@
+<svg xmlns="//www.w3.org/2000/svg" version="1.1" class="svg-filters" style="display:none;">
+    <defs>
+        <filter id="marker-shape">
+            <feTurbulence type="fractalNoise" baseFrequency="0 0.15" numOctaves="1" result="warp" />
+            <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="30" in="SourceGraphic" in2="warp" />
+        </filter>
+    </defs>
+</svg>
+<div class="xof-image-gallery-wrapper">
+
+    <div class="main-row">
+        <div class="xof-image-gallery"
+             [style.background-image]="'url(' + images[currentImage].image + ')' | safe: 'style'">
+            <div class="actions">
+                <span class="next" (click)="next()"></span>
+                <span class="previous" (click)="previous()"></span>
+            </div>
+        </div>
+
+        <div class="info">
+            <div class="title realistic-marker-highlight">
+                {{images[currentImage].label}}
+            </div>
+            <div class="description realistic-marker-highlight">
+                {{images[currentImage].description}}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="thumbnails">
+        <img *ngFor="let image of images; let i = index;" [src]="image.image | safe: 'resourceUrl'" alt="thumbnails" (click)="currentImage = i;">
+    </div>
+</div>
+
