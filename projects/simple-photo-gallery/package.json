@@ -1,6 +1,6 @@
 {
   "name": "@khalilof/simple-photo-gallery",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": "https://github.com/khalilof/simple-photo-gallery.git",
   "peerDependencies": {
     "@angular/common": "^10.0.14",

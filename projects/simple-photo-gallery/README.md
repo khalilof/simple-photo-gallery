@@ -65,4 +65,6 @@ export class AppComponent implements OnInit {
 ````
 
 
+## Demo
 
+[DEMO](https://angular-simple-photo-gallery-example.stackblitz.io)
