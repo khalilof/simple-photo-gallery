@@ -64,5 +64,6 @@ export class AppComponent implements OnInit {
 <kh-simple-photo-gallery [images]="images"></kh-simple-photo-gallery>
 ````
 
+## Demo
 
-
+[DEMO](https://angular-simple-photo-gallery-example.stackblitz.io)
